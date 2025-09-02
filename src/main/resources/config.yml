@@ -6,6 +6,10 @@
 # If false, the plugin will only display a marker, and items will drop as usual.
 save-items-in-ghost: true
 
+# Can OTHER players loot items from a ghost if they find it first?
+# If true, PvP risk is created. If false, only the owner can loot.
+allow-looting-by-others: false # Disabled by default for security reasons
+
 # The time in seconds after which the ghost and the items stored in it will disappear.
 # If the player does not return within this time, the items will be lost.
 # Set to 0 to keep items forever (not recommended).
