@@ -17,6 +17,8 @@
 - **Безопасное хранение вещей**: Ваш инвентарь сохраняется внутри призрака, а не выпадает на землю, что защищает его от исчезновения или кражи.
 - **Визуальный маркер**: На месте смерти появляется ваша голова со свечением, которую легко заметить издалека.
 - **Компас-навигатор**: После возрождения ваш компас автоматически указывает на место смерти.
+- **Защита от перезагрузок:** Призраки и их вещи теперь сохраняются при перезапуске сервера или плагина. Вы больше никогда не потеряете вещи из-за выключения сервера.
+- **Настраиваемое PvP-лутание:** Разрешите другим игрокам забирать ваши вещи для рискованного PvP-геймплея или оставьте эту опцию выключенной для классического PvE-выживания.
 - **Полная настраиваемость**: Настройте время жизни призрака, дистанцию для сбора вещей и другие параметры в `config.yml`.
 - **Минимальная нагрузка**: Плагин оптимизирован и активен только тогда, когда это необходимо, не создавая нагрузки на сервер.
 - **Поддержка версий**: Работает на версиях от 1.19.4 до 1.21+.
@@ -74,6 +76,8 @@ Instead of just printing coordinates in chat, GhostlyPath creates a "ghost" (you
 - **Safe Item Storage**: Your inventory is stored inside the ghost instead of dropping on the ground, protecting it from despawning or being stolen.
 - **Visual Marker**: A glowing player head appears at your death location, making it easy to spot from a distance.
 - **Compass Navigation**: Upon respawning, your compass automatically points to your death location.
+- **Server Restart Proof:** Ghosts and their items will persist through server restarts and reloads. You will never lose your items due to a server shutdown.
+- **Configurable PvP Looting:** Enable looting by other players for a high-risk PvP experience, or keep it disabled for a classic, safe PvE feeling.
 - **Fully Configurable**: Customize the ghost's lifespan, pickup distance, and other settings in `config.yml`.
 - **Lightweight & Optimized**: The plugin is designed to be efficient and is only active when needed, ensuring zero server lag.
 - **Version Support**: Works on versions 1.19.4 through 1.21+.
