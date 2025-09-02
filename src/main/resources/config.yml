@@ -1,0 +1,28 @@
+# GhostlyPath Configuration
+
+# --- Basic settings ---
+
+# Should the ghost store the player's items so that they do not drop or disappear?
+# If false, the plugin will only display a marker, and items will drop as usual.
+save-items-in-ghost: true
+
+# The time in seconds after which the ghost and the items stored in it will disappear.
+# If the player does not return within this time, the items will be lost.
+# Set to 0 to keep items forever (not recommended).
+ghost-timeout-seconds: 1800 # 30 minutes
+
+# The distance (in blocks) from the ghost at which it will disappear and return the items to the player.
+remove-distance-blocks: 3
+
+# Whether to enable the feature where the compass in the player's hands will point to the place of death.
+enable-compass-tracking: true
+
+# --- Messages (you can use color codes, for example &a, &b, &7) ---
+messages:
+  death-location-set: "&aYour items are safe! The ghost is waiting for you. The compass will show you the way."
+  ghost-removed-nearby: "&eYou found your items! They have been returned to your inventory."
+  items-dropped-full-inv: "&6Your inventory was full, so some items were dropped on the ground!"
+  ghost-timed-out: "&cTime has run out. Your ghost and all items in it have disappeared forever."
+  compass-not-enabled: "&aYour death location has been marked with a ghostly trail."
+  config-reloaded: "&aThe GhostlyPath configuration has been successfully reloaded."
+  no-permission: "&cYou do not have permission to execute this command."

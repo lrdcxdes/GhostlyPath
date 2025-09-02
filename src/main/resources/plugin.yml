@@ -1,0 +1,18 @@
+name: GhostlyPath
+version: '1.0.0'
+main: dev.lrdcxdes.ghostlypath.GhostlyPath
+api-version: '1.19'
+authors: [ lrdcxdes ]
+description: A lightweight plugin to help players find their death location and recover their items.
+website: https://github.com/lrdcxdes/GhostlyPath
+commands:
+  ghostlypath:
+    description: Reloads the GhostlyPath plugin configuration.
+    aliases: [gp, gpath]
+    permission: ghostlypath.admin.reload
+    usage: /<command> reload
+
+permissions:
+  ghostlypath.admin.reload:
+    description: Allows reloading the plugin's configuration.
+    default: op
