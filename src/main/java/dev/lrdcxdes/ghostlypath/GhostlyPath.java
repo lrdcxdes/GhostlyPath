@@ -1,5 +1,6 @@
 package dev.lrdcxdes.ghostlypath;
 
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -8,6 +9,8 @@ import java.util.Objects;
 public final class GhostlyPath extends JavaPlugin {
 
     private DeathManager deathManager;
+    // Public static MiniMessage instance for easy access across the plugin
+    public static final MiniMessage MM = MiniMessage.miniMessage();
 
     @Override
     public void onEnable() {
@@ -16,11 +19,11 @@ public final class GhostlyPath extends JavaPlugin {
         File ghostsFile = new File(getDataFolder(), "ghosts.yml");
         this.deathManager = new DeathManager(this, ghostsFile);
 
-        // Загружаем призраков из файла ПОСЛЕ того, как миры полностью загрузятся
+        // Load ghosts from file after worlds are fully loaded
         getServer().getScheduler().runTaskLater(this, () -> {
             deathManager.loadGhosts();
             getLogger().info("Loaded " + deathManager.getActiveGhostCount() + " ghosts from disk.");
-        }, 1L); // 1 тик задержки - это стандартная практика
+        }, 1L);
 
         getServer().getPluginManager().registerEvents(new PlayerEventsListener(deathManager), this);
         Objects.requireNonNull(getCommand("ghostlypath")).setExecutor(new AdminCommands(this));
@@ -29,11 +32,11 @@ public final class GhostlyPath extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Больше не возвращаем вещи, а СОХРАНЯЕМ их на диск
+        // Save all active ghosts to disk on shutdown
         if (deathManager != null) {
             deathManager.saveGhosts();
             getLogger().info("Saved " + deathManager.getActiveGhostCount() + " active ghosts to disk.");
-            // Очищаем сущности, чтобы не было "двойников" при /reload
+            // Clean up entities to prevent duplicates on /reload
             deathManager.clearAllGhostEntities();
         }
         getLogger().info("GhostlyPath has been disabled!");
@@ -41,7 +44,9 @@ public final class GhostlyPath extends JavaPlugin {
 
     public void reloadPluginConfig() {
         reloadConfig();
-        deathManager.restartUpdateTask();
+        if (deathManager != null) {
+            deathManager.restartMainTask();
+        }
         getLogger().info("Configuration reloaded.");
     }
 }

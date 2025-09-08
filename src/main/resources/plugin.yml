@@ -1,7 +1,7 @@
 name: GhostlyPath
-version: '1.1.0'
+version: ${project.version}
 main: dev.lrdcxdes.ghostlypath.GhostlyPath
-api-version: '1.19'
+api-version: '1.21'
 authors: [ lrdcxdes ]
 description: A lightweight plugin to help players find their death location and recover their items.
 website: https://github.com/lrdcxdes/GhostlyPath

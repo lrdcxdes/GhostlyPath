@@ -1,32 +1,43 @@
-# GhostlyPath Configuration
+# --- GhostlyPath Configuration ---
 
-# --- Basic settings ---
-
-# Should the ghost store the player's items so that they do not drop or disappear?
-# If false, the plugin will only display a marker, and items will drop as usual.
+# Should the plugin save items in a ghost on death?
+# If false, items will drop as usual.
 save-items-in-ghost: true
 
-# Can OTHER players loot items from a ghost if they find it first?
-# If true, PvP risk is created. If false, only the owner can loot.
-allow-looting-by-others: false # Disabled by default for security reasons
+# The distance (in blocks) from a ghost at which it will return items to the owner.
+retrieve-distance-blocks: 2.5
 
-# The time in seconds after which the ghost and the items stored in it will disappear.
-# If the player does not return within this time, the items will be lost.
-# Set to 0 to keep items forever (not recommended).
-ghost-timeout-seconds: 1800 # 30 minutes
+# When enabled, a player's compass will point to their most recent death location.
+enable-compass-tracking: false
 
-# The distance (in blocks) from the ghost at which it will disappear and return the items to the player.
-remove-distance-blocks: 3
+# --- Despawn Settings ---
+# A ghost will despawn after this many game ticks (1/20th of a second) of being inside a
+# loaded, entity-processing chunk. The timer pauses if the chunk is unloaded.
+# Default: 6000 ticks = 5 minutes of being loaded.
+# Set to 0 to disable this type of despawning.
+ghost-timeout-ticks: 6000
 
-# Whether to enable the feature where the compass in the player's hands will point to the place of death.
-enable-compass-tracking: true
+# --- Looting Settings ---
+looting:
+  # Can OTHER players loot items from a ghost?
+  # If false, only the owner can ever retrieve the items.
+  allow-looting-by-others: true
 
-# --- Messages (you can use color codes, for example &a, &b, &7) ---
+  # The time (in seconds) that ONLY the owner can pick up their items.
+  # After this time, if 'allow-looting-by-others' is true, anyone can take the items.
+  owner-only-duration: 3600 # 10 minutes
+
+# --- Messages (Formatted with MiniMessage) ---
+# Learn more at: https://docs.adventure.kyori.net/minimessage/format.html
 messages:
-  death-location-set: "&aYour items are safe! The ghost is waiting for you. The compass will show you the way."
-  ghost-removed-nearby: "&eYou found your items! They have been returned to your inventory."
-  items-dropped-full-inv: "&6Your inventory was full, so some items were dropped on the ground!"
-  ghost-timed-out: "&cTime has run out. Your ghost and all items in it have disappeared forever."
-  compass-not-enabled: "&aYour death location has been marked with a ghostly trail."
-  config-reloaded: "&aThe GhostlyPath configuration has been successfully reloaded."
-  no-permission: "&cYou do not have permission to execute this command."
+  death-location-set: "<#C3FBD8>Ваши вещи в безопасности. Призрак ждет вас."
+  compass-not-enabled: "<#C3FBD8>Ваши вещи сохранены призраком."
+  ghost-retrieved: "<#DEF7FE>Вы подобрали свои вещи!"
+  items-dropped-full-inv: "<#FED6BC>Инвентарь был полон, часть вещей выпала."
+  ghost-timed-out: "<#F2B6A0>Ваш призрак растаял вместе с вещами."
+  looted-by-other: "<#C3FBD8>Вы собрали вещи <#EAEAEA>%player_name%</#EAEAEA>."
+  owner-looted-notification: "<#F2B6A0>Ваши вещи подобрал <#EAEAEA>%looter_name%</#EAEAEA>."
+  not-your-ghost: "<#E7ECFF>Этот призрак ждет другого."
+  owner-protection-active: "<#FED6BC>Призрак еще защищен: <#E7ECFF>%time%</#E7ECFF>"
+  config-reloaded: "<#DEF7FE>Конфиг GhostlyPath перезагружен."
+  no-permission: "<#E7ECFF>У вас нет прав для этой команды."
